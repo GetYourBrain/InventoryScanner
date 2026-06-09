@@ -8,10 +8,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvBrand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inventory Scanner"
-        android:textSize="24sp"/>
+        android:text="Brand"
+        android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/tvModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model"
+        android:textSize="12sp"/>
+    <TextView
+        android:id="@+id/tvAndroid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android version"
+        android:textSize="12sp"/>
 
 </LinearLayout>

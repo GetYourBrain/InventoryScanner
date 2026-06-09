@@ -1,11 +1,8 @@
 package com.example.inventoryscannerevroopt.domain.model
-import android.os.Build
 
-fun checkDeviceInfo(){
-    val brandName = Build.BRAND
-    val modelName = Build.MODEL
-    val androidVersion = Build.VERSION.RELEASE
-    println(brandName)
-    println(modelName)
-    println(androidVersion)
-}
+data class DeviceInfo(
+    val brandName : String? = null,
+    val modelName : String? = null,
+    val androidVersion : String? = null
+)
+

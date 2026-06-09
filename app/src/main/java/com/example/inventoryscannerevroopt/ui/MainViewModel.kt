@@ -1,4 +1,13 @@
 package com.example.inventoryscannerevroopt.ui
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+import com.example.inventoryscannerevroopt.data.scanner.DeviceInfoProvider
+import com.example.inventoryscannerevroopt.domain.model.DeviceInfo
+
+class MainViewModel : ViewModel() {
+    private val deviceInfoProvider = DeviceInfoProvider()
+
+    fun getDeviceInfo(): DeviceInfo {
+        return deviceInfoProvider.getDeviceInfo()
+    }
 }

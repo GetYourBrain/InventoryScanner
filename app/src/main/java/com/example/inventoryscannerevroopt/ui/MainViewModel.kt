@@ -1,7 +1,7 @@
 package com.example.inventoryscannerevroopt.ui
 
 import androidx.lifecycle.ViewModel
-import com.example.inventoryscannerevroopt.data.scanner.DeviceInfoProvider
+import com.example.inventoryscannerevroopt.data.scanner.provider.DeviceInfoProvider
 import com.example.inventoryscannerevroopt.domain.model.DeviceInfo
 
 class MainViewModel : ViewModel() {

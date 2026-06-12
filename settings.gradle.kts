@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "InventoryScannerEvroopt"
 include(":app")
- 
+include(":mylibrary")

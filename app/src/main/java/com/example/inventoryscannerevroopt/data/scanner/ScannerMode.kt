@@ -2,5 +2,7 @@ package com.example.inventoryscannerevroopt.data.scanner
 
 enum class ScannerMode {
     BROADCAST,
-    KEYBOARD
+    KEYSTROKE,
+    SDK,
+    EDIT_TEXT
 }

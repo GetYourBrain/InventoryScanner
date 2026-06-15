@@ -100,8 +100,6 @@ class SettingsFragment : Fragment(
                     R.id.tvMode
                 ).text =
                     "Выбран режим сканирования: EDIT_TEXT"
-
-            ScannerMode.SDK -> {}
         }
     }
 }

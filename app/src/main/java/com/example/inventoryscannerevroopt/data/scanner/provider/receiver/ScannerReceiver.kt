@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 import com.example.inventoryscannerevroopt.domain.model.BarcodeData
 
-class ScannerReceiver(
+abstract class ScannerReceiver(
     private val onBarcodeScanned: (BarcodeData) -> Unit
 ): BroadcastReceiver() {
 
@@ -15,27 +15,13 @@ class ScannerReceiver(
         intent: Intent?
     ) {
        Log.d("SCAN_TEST", "Broadcast received")
-       val barcode = intent?.getStringExtra(
-           "SCAN_BARCODE1"
-       )
-        val state = intent?.getStringExtra(
-            "SCAN_STATE"
-        )
-
-        val barcodeType = intent?.getIntExtra(
-            "SCAN_BARCODE_TYPE",
-            -1
-            )?: -1
-        if(!barcode.isNullOrEmpty()){
-            onBarcodeScanned(
-                BarcodeData(
-                    barcode = barcode,
-                    barcodeType = barcodeType,
-                    isSuccess = state == "ok"
-                )
-            )
+       val barcodeData = extractBarcodeData(intent)
+        if (barcodeData != null){
+            onBarcodeScanned(barcodeData)
         }
     }
+
+    protected abstract fun extractBarcodeData(intent: Intent?): BarcodeData?
 
 
 }

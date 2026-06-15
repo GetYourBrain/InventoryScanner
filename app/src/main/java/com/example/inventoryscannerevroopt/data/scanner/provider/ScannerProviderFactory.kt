@@ -2,6 +2,7 @@ package com.example.inventoryscannerevroopt.data.scanner.provider
 
 import android.content.Context
 import com.example.inventoryscannerevroopt.data.scanner.ScannerType
+import com.example.inventoryscannerevroopt.data.scanner.provider.brand.IData.IDataScannerProvider
 import com.example.inventoryscannerevroopt.data.scanner.provider.brand.newland.NewlandScannerProvider
 import com.example.inventoryscannerevroopt.data.scanner.provider.brand.UnsupportedScannerProvider
 import com.example.inventoryscannerevroopt.domain.model.BarcodeData
@@ -15,6 +16,11 @@ object ScannerProviderFactory {
     ): ScannerProvider{
         return when(type){
             ScannerType.NEWLAND -> NewlandScannerProvider(
+                context,
+                onBarcodeScanned
+            )
+
+            ScannerType.IDATA -> IDataScannerProvider(
                 context,
                 onBarcodeScanned
             )

@@ -73,8 +73,6 @@ class ScannerFragment : Fragment(
                     R.id.tvCurrentMode
                 ).text =
                     "Выбран режим сканирования: EDIT_TEXT"
-
-            ScannerMode.SDK -> {}
         }
 
         btnStart.setOnClickListener {

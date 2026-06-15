@@ -3,9 +3,10 @@ package com.example.inventoryscannerevroopt.data.scanner
 enum class ScannerType {
     /*ATOL,
     AUTOIDQ9,
-    IDATA,
+
     MEFERI,*/
     NEWLAND,
+    IDATA,
     /*POINTMOBILE,
     SMARTSLIM_KOZEN,
     T41,

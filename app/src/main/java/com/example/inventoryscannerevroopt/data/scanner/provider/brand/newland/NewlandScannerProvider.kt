@@ -17,7 +17,7 @@ class NewlandScannerProvider(
     private val onBarcodeScanned: (BarcodeData) -> Unit
 ): ScannerProvider, ScannerModeController {
 
-    private val scannerReceiver = ScannerReceiver(onBarcodeScanned)
+    private val scannerReceiver = NewlandScannerReceiver(onBarcodeScanned)
     private var currentMode: ScannerMode? = null
 
     override val supportedModes = setOf(
@@ -41,10 +41,6 @@ class NewlandScannerProvider(
 
             ScannerMode.EDIT_TEXT -> {
                 setEditTextMode()
-            }
-
-            ScannerMode.SDK -> {
-                Log.d("SCAN_TEST", "SDK mode not supported")
             }
         }
 

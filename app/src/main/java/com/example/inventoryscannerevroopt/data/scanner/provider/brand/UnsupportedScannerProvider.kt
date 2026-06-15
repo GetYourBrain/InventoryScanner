@@ -1,21 +1,22 @@
 package com.example.inventoryscannerevroopt.data.scanner.provider.brand
 
+import android.util.Log
 import com.example.inventoryscannerevroopt.data.scanner.provider.ScannerProvider
 
 class UnsupportedScannerProvider: ScannerProvider {
     override fun startScanning() {
-        TODO("Not yet implemented")
+        Log.d("SCAN_TEST", "Provider starScanning")
     }
 
     override fun stopScanning() {
-        TODO("Not yet implemented")
+        Log.d("SCAN_TEST", "Provider stopScanning")
     }
 
     override fun registerReceiver() {
-        TODO("Not yet implemented")
+        Log.d("SCAN_TEST", "Provider registerReceiver")
     }
 
     override fun unregisterReceiver() {
-        TODO("Not yet implemented")
+        Log.d("SCAN_TEST", "Provider unregisterReceiver")
     }
 }

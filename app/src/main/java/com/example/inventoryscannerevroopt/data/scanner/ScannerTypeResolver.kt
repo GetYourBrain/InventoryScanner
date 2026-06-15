@@ -8,6 +8,9 @@ class ScannerTypeResolver {
             deviceInfo.brandName!!.contains("Newland", true) ->
                 ScannerType.NEWLAND
 
+            deviceInfo.brandName!!.contains("IData", true) ->
+                ScannerType.IDATA
+
             else ->
                 ScannerType.UNKNOWN
         }

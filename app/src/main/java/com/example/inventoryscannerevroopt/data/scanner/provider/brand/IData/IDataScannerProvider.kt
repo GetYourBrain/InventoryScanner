@@ -31,19 +31,48 @@ class IDataScannerProvider(
 
         when (mode) {
 
-            ScannerMode.BROADCAST ->
-                scanner.setOutputMode(1)
+            ScannerMode.BROADCAST -> setBroadcastMode()
 
-            ScannerMode.KEYSTROKE ->
-                scanner.setOutputMode(2)
+            ScannerMode.KEYSTROKE -> setKeystrokeMode()
 
-            ScannerMode.EDIT_TEXT ->
-                scanner.setOutputMode(0)
+            ScannerMode.EDIT_TEXT -> setEditTextMode()
         }
     }
 
     override fun getCurrentMode(): ScannerMode? {
         return currentMode
+    }
+
+    private fun configureScanner(outputMode: Int){
+        scanner.setOutputMode(outputMode)
+        scanner.addPrefix("?")
+        scanner.addSuffix("=")
+
+        scanner.setTimeOut(3000)
+
+        scanner.setIntervalTime(100)
+
+        scanner.enablePlayBeep(false)
+        scanner.enablePlayVibrate(false)
+
+        scanner.lightSet(true)
+
+        scanner.enableAddKeyValue(0)
+
+        scanner.setEncodeFormart(4)
+
+    }
+
+    private fun setBroadcastMode() {
+        configureScanner(1)
+    }
+
+    private fun setKeystrokeMode() {
+        configureScanner(2)
+    }
+
+    private fun setEditTextMode() {
+        configureScanner(0)
     }
 
     override fun startScanning() {

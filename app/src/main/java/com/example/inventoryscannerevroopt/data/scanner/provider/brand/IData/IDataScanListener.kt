@@ -17,7 +17,7 @@ class IDataScanListener(
 
         onBarcodeScanned(
             BarcodeData(
-                barcode = data,
+                barcode = data.replace("\u001D", "[GS]"),
                 barcodeType = type
             )
         )

@@ -52,32 +52,24 @@ class NewlandScannerProvider(
 
     private fun setBroadcastMode(){
         sendConfigIntent(
-            scanMode = 3,
-            prefixEnabled = false,
-            suffixEnabled = false
+            scanMode = 3
         )
     }
 
     private fun setKeystrokeMode(){
         sendConfigIntent(
-            scanMode = 2,
-            prefixEnabled = true,
-            suffixEnabled = true
+            scanMode = 2
         )
     }
 
     private fun setEditTextMode(){
         sendConfigIntent(
-            scanMode = 1,
-            prefixEnabled = false,
-            suffixEnabled = false
+            scanMode = 1
         )
     }
 
     private fun sendConfigIntent(
-        scanMode: Int,
-        prefixEnabled: Boolean,
-        suffixEnabled: Boolean
+        scanMode: Int
     ){
         val intent = Intent(NewlandConstants.ACTION_BAR_SCANCFG).apply {
 
@@ -95,12 +87,15 @@ class NewlandScannerProvider(
             putExtra(NewlandConstants.EXTRA_SCAN_NOTY_SND, 0)
             putExtra(NewlandConstants.EXTRA_SCAN_NOTY_VIB, 0)
             putExtra(NewlandConstants.EXTRA_SCAN_NOTY_LED, 1)
+            putExtra(NewlandConstants.SCAN_PREFIX_ENABLE, 0)
+            putExtra(NewlandConstants.SCAN_SUFFIX_ENABLE, 0)
+            if (scanMode == 2) {
+                putExtra(NewlandConstants.SCAN_PREFIX_ENABLE, 1)
+                putExtra(NewlandConstants.SCAN_PREFIX, "3F")
 
-            putExtra(NewlandConstants.SCAN_PREFIX_ENABLE,1)
-            putExtra(NewlandConstants.SCAN_PREFIX, "3F")
-
-            putExtra(NewlandConstants.SCAN_SUFFIX_ENABLE, 1)
-            putExtra(NewlandConstants.SCAN_SUFFIX, "3D")
+                putExtra(NewlandConstants.SCAN_SUFFIX_ENABLE, 1)
+                putExtra(NewlandConstants.SCAN_SUFFIX, "3D")
+            }
 
             putExtra(NewlandConstants.SCAN_ENCODE, 4)
         }

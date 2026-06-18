@@ -20,7 +20,7 @@ class NewlandScannerReceiver(
         ) ?: -1
         return if (!barcode.isNullOrEmpty()) {
                 BarcodeData(
-                    barcode = barcode,
+                    barcode = barcode.replace("\u001D", "[GS]"),
                     barcodeType = barcodeType,
                 )
 

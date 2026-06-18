@@ -45,8 +45,6 @@ class IDataScannerProvider(
 
     private fun configureScanner(outputMode: Int){
         scanner.setOutputMode(outputMode)
-        scanner.addPrefix("?")
-        scanner.addSuffix("=")
 
         scanner.setTimeOut(3000)
 
@@ -61,18 +59,27 @@ class IDataScannerProvider(
 
         scanner.setEncodeFormart(4)
 
+        scanner.filterCharacter("")
+
+
     }
 
     private fun setBroadcastMode() {
         configureScanner(1)
+        scanner.addPrefix("")
+        scanner.addSuffix("")
     }
 
     private fun setKeystrokeMode() {
         configureScanner(2)
+        scanner.addPrefix("?")
+        scanner.addSuffix("=")
     }
 
     private fun setEditTextMode() {
         configureScanner(0)
+        scanner.addPrefix("")
+        scanner.addSuffix("")
     }
 
     override fun startScanning() {

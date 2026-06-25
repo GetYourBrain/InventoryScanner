@@ -1,59 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Информация об устройстве"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Бренд:"/>
+
+
+        <TextView
+            android:id="@+id/tvModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Модель:"/>
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Версия андроид:"/>
 
         <TextView
             android:id="@+id/tvCurrentMode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Текущий режим: Неизвестно"
-            android:textSize="18sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:text="Текущий режим:"/>
 
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="24dp" />
+            android:layout_height="10dp"/>
 
         <Button
-            android:id="@+id/btnStartScan"
+            android:id="@+id/btnSetBroadcastScanner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Сканировать" />
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bordo"
+            android:text="Настроить быстрый сканер"
+            android:textSize="12sp"/>
 
         <Button
-            android:id="@+id/btnStopScan"
+            android:id="@+id/btnSetKeystrokeScanner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Остановить сканирование" />
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bordo"
+            android:text="Настроить клавиатурный сканер"
+            android:textSize="12sp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="24dp" />
 
-        <EditText
-            android:id="@+id/etKeystrokeTest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Поле ввода" />
-
-        <TextView
-            android:id="@+id/tvScanResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Штрихкод:"
-            android:textSize="16sp"
-            android:paddingTop="16dp" />
 
     </LinearLayout>
 

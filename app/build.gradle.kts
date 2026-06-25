@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.inventoryscannerevroopt"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
     }
 
@@ -46,6 +46,7 @@ dependencies {
     implementation(fileTree("libs") {
         include("*.jar")
     })
+    implementation("androidx.datastore:datastore-preferences:1.2.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

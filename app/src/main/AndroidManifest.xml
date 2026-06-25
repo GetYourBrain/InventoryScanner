@@ -12,7 +12,7 @@
         android:theme="@style/Theme.InventoryScannerEvroopt">
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
 
             <intent-filter>

@@ -10,81 +10,66 @@
         android:padding="16dp"
         android:orientation="vertical">
 
-        <Space
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content"
+            android:text="Адрес MarketServer"/>
+
+        <EditText
+            android:id="@+id/etIp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Режим сканирования"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/btnBroadcast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Broadcast Mode" />
+            android:text="Порт HTTP MarketServer"/>
 
-        <Button
-            android:id="@+id/btnKeystroke"
+        <EditText
+            android:id="@+id/etPort"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Keystroke Mode" />
-
-        <Button
-            android:id="@+id/btnEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="EditText Mode" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tvMode"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Выбранный режим сканирования: Unknown"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:text="Номер склада"/>
+
+        <EditText
+            android:id="@+id/etWarehouse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+            android:layout_height="40dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Информация об устройстве"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            android:textColor="@color/black"/>
+        <Button
+            android:id="@+id/btnCheckConnect"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bordo"
+            android:text="Проверка связи"
+            android:textSize="12sp"/>
 
-        <TextView
-            android:id="@+id/tvBrand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Бренд"/>
+        <Button
+            android:id="@+id/btnScanner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bordo"
+            android:text="Сканер"
+            android:textSize="12sp"/>
 
-        <TextView
-            android:id="@+id/tvModel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Модель"/>
-
-        <TextView
-            android:id="@+id/tvAndroid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Android"/>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/bordo"
+            android:text="Сохранить"
+            android:textSize="12sp"/>
 
     </LinearLayout>
 

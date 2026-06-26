@@ -22,6 +22,8 @@ class ScannerFragment: Fragment() {
     private var _binding: FragmentScannerBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var scannerManager: ScannerManager
+
     private val viewModel: ScannerViewModel by viewModels{
         ScannerViewModelFactory(requireContext())
     }
@@ -39,14 +41,20 @@ class ScannerFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        scannerManager = ScannerManager(
+            context = requireContext()
+        ) { barcode ->
 
+            viewModel.onBarcodeScanned(barcode)
+
+        }
 
         val deviceInfo = viewModel.deviceInfo
         binding.tvBrand.text = "Бренд: ${deviceInfo.brandName}"
         binding.tvModel.text = "Модель: ${deviceInfo.modelName}"
         binding.tvVersion.text = "Версия: ${deviceInfo.androidVersion}"
 
-        observeScannerMode()
+        observeUiState()
 
         binding.btnSetBroadcastScanner.setOnClickListener {
             viewModel.changeMode(ScannerMode.BROADCAST)
@@ -58,13 +66,36 @@ class ScannerFragment: Fragment() {
         }
     }
 
-    private fun observeScannerMode(){
-        viewLifecycleOwner.lifecycleScope.launch{
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.scannerMode.collect{ mode->
-                    binding.tvCurrentMode.text = "Текущий режим: ${mode.title}"
+    override fun onStart() {
+        super.onStart()
+        scannerManager.registerReceiver()
+    }
+
+    override fun onStop() {
+        scannerManager.unregisterReceiver()
+        super.onStop()
+    }
+
+    private fun observeUiState() {
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                viewModel.uiState.collect { state ->
+
+                    binding.tvCurrentMode.text =
+                        "Текущий режим: ${state.currentMode.title}"
+
+                    binding.tvBroadcastScannerTest.text =
+                        "Код быстрого режима: ${state.broadcastBarcode?.barcode ?: ""}"
+
+                    binding.tvKeystrokeScannerTest.text =
+                        "Код клавиатурного режима:"
                 }
+
             }
+
         }
 
     }

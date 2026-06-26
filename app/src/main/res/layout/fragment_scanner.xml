@@ -66,6 +66,21 @@
             android:text="Настроить клавиатурный сканер"
             android:textSize="12sp"/>
 
+        <TextView
+            android:id="@+id/tvBroadcastScannerTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tvKeystrokeScannerTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:id="@+id/etKeystrokeScannerTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
 
     </LinearLayout>

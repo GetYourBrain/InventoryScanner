@@ -6,11 +6,18 @@ import com.example.inventoryscannerevroopt.data.scanner.provider.DeviceInfoProvi
 import com.example.inventoryscannerevroopt.data.scanner.provider.ScannerProvider
 import com.example.inventoryscannerevroopt.data.scanner.provider.ScannerProviderFactory
 import com.example.inventoryscannerevroopt.domain.model.BarcodeData
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class ScannerManager(
     context: Context,
-    onBarcodeScanned: (BarcodeData) -> Unit
 ) : ScannerModeController {
+
+    private val _barcodeFlow = MutableSharedFlow<BarcodeData>(
+        extraBufferCapacity = 1
+    )
+
+    val barcodeFlow = _barcodeFlow
 
     private val scannerProvider: ScannerProvider
 
@@ -19,7 +26,6 @@ class ScannerManager(
     init {
 
         val deviceInfo = DeviceInfoProvider().getDeviceInfo()
-
         val scannerType = ScannerTypeResolver().resolve(deviceInfo)
 
         Log.d("SCAN_TEST", "Scanner type = $scannerType")
@@ -27,7 +33,11 @@ class ScannerManager(
         scannerProvider = ScannerProviderFactory.createScanner(
             type = scannerType,
             context = context,
-            onBarcodeScanned = onBarcodeScanned
+            onBarcodeScanned = { barcodeData ->
+                Log.d("SCAN_TEST", "Emit = ${barcodeData.barcode}")
+                val emitted = _barcodeFlow.tryEmit(barcodeData)
+                Log.d("SCAN_TEST", "Emitted = $emitted")
+            }
         )
 
         modeController = scannerProvider as? ScannerModeController

@@ -22,8 +22,6 @@ class ScannerFragment: Fragment() {
     private var _binding: FragmentScannerBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var scannerManager: ScannerManager
-
     private val viewModel: ScannerViewModel by viewModels{
         ScannerViewModelFactory(requireContext())
     }
@@ -40,14 +38,6 @@ class ScannerFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        scannerManager = ScannerManager(
-            context = requireContext()
-        ) { barcode ->
-
-            viewModel.onBarcodeScanned(barcode)
-
-        }
 
         val deviceInfo = viewModel.deviceInfo
         binding.tvBrand.text = "Бренд: ${deviceInfo.brandName}"
@@ -68,11 +58,11 @@ class ScannerFragment: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        scannerManager.registerReceiver()
+        viewModel.registerScanner()
     }
 
     override fun onStop() {
-        scannerManager.unregisterReceiver()
+        viewModel.unregisterScanner()
         super.onStop()
     }
 
@@ -91,7 +81,7 @@ class ScannerFragment: Fragment() {
                         "Код быстрого режима: ${state.broadcastBarcode?.barcode ?: ""}"
 
                     binding.tvKeystrokeScannerTest.text =
-                        "Код клавиатурного режима:"
+                        "Код клавиатурного режима: ${state.keystrokeBarcode?.barcode ?: ""}"
                 }
 
             }

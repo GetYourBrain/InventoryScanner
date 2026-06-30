@@ -12,7 +12,7 @@ object ScannerProviderFactory {
     fun createScanner(
         type: ScannerType,
         context: Context,
-        onBarcodeScanned: (BarcodeData) -> Unit
+        onBarcodeScanned : (BarcodeData) -> Unit
     ): ScannerProvider{
         return when(type){
             ScannerType.NEWLAND -> NewlandScannerProvider(

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.inventoryscannerevroopt.data.datastore.ScannerPreferences
 import com.example.inventoryscannerevroopt.data.repository.ScannerRepository
+import com.example.inventoryscannerevroopt.data.scanner.ScannerManager
 import com.example.inventoryscannerevroopt.data.scanner.ScannerModeManager
 import com.example.inventoryscannerevroopt.data.scanner.provider.DeviceInfoProvider
 
@@ -15,7 +16,8 @@ class ScannerViewModelFactory(
     private val repository = ScannerRepository(
         preferences = ScannerPreferences(context.applicationContext),
         scannerModeManager = ScannerModeManager(context.applicationContext),
-        deviceInfoProvider = DeviceInfoProvider()
+        deviceInfoProvider = DeviceInfoProvider(),
+        scannerManager = ScannerManager(context.applicationContext)
     )
 
     @Suppress("UNCHECKED_CAST")
